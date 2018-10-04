@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div>
+    <div id="game">
         <!-- Page text begins -->
         <h1>The Psychic Game</h1>
         <p id="directions-text">Guess what letter I'm thinking of</p>
@@ -24,6 +24,7 @@
 
     var computerChoices = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
+    // var userGuess = [];
     var wins = 0;
     var losses = 0;
     var guessesLeft = 9;
@@ -37,13 +38,11 @@
     var guessesLeftText = document.getElementById("guessesLeft-text");
     var guessesSoFarText = document.getElementById("guessesSoFar-text");
 
-    // Whenever a key is pressed, alert "pressed a button".
-    document.onkeyup = function(event) {
-    
-    // Determines which key was pressed.
-    var userGuess = event.key;
 
-    // Randomly chooses a choice from the options array. This is the Computer's guess.
+    document.onkeyup = function(event) {
+
+    var userGuess = event.key; 
+
     var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     
     
@@ -69,14 +68,14 @@
             guessesSoFar = [];
             }
     
-        
-// Display the user and computer guesses, and wins/losses/ties.
+    
         winsText.textContent = "wins: " + wins;
         lossesText.textContent = "losses: " + losses;
         guessesLeftText.textContent = "Guesses left: " + guessesLeft;
-        guessesSoFarText.textContent = "Guesses so far: " + userGuess;
-      }
-    
+        guessesSoFarText.textContent = "Guesses so far: " + guessesSoFar.join(", ") ;
+
+        document.querySelector("#game").innerHTML = html;
+    }
 </script>
 
 </body>
